@@ -1,13 +1,46 @@
-<h1>Explore the air quality</h1>
-<h2>anywhere in the world</h2>
-<!-- <mat-form-field>
-     <mat-select placeholder="Cities" formControlName="cities" [(ngModel)]="selectedCity">
-        <mat-option *ngFor="let city of cityBox" [value]="city.Id">{{city.name}}</mat-option>
-    </mat-select> 
-</mat-form-field> -->
+<div class="flex-container">
+    <div class="container">
+        <div class="header">
+            <h1>Explore the air quality</h1>
 
-<!-- <mat-form-field>
-    <mat-select placeholder="Country" formControlName="countries">
-        <mat-option *ngFor="let country of countryBox" [value]="country.Id">{{country.name}}</mat-option>
-    </mat-select>
-</mat-form-field> -->
+            <h2>in Serbia</h2>
+        </div>
+
+        <form [formGroup]="searchForm" (submit)="search()">
+            <mat-form-field id="mat-select-states">
+                <mat-select formControlName="states" [(ngModel)]="selectedState"
+                    (selectionChange)="(filterCities($event))">
+                    <mat-option placeholder="States" *ngFor="let state of this.service.States" [value]="state.id">
+                        {{state.state}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field id="mat-select-cities">
+                <mat-select [(ngModel)]="selectedCity" formControlName="cities">
+                    <mat-option placeholder="Cities" *ngFor="let city of cities" [value]="city.id">
+                        {{city.city}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary">
+                Search
+            </button>
+        </form>
+
+
+
+    </div>
+
+    <div class="level-2">
+        <div>
+            <app-most-polluted></app-most-polluted>
+
+        </div>
+        <div>
+            <app-display-city [pollution]="pollution" *ngIf="this.check === true">
+            </app-display-city>
+        </div>
+    </div>
+</div>

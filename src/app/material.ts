@@ -10,6 +10,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatCardModule } from '@angular/material/card';
 @NgModule({
     imports: [
         MatFormFieldModule,
@@ -24,6 +25,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
         MatButtonModule,
         MatTooltipModule,
         MatIconModule,
+        MatCardModule
 
     ],
     exports: [
@@ -39,6 +41,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
         MatButtonModule,
         MatTooltipModule,
         MatIconModule,
+        MatCardModule
     ],
     providers: [MatNativeDateModule],
 })

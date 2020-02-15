@@ -1,0 +1,41 @@
+<div class="container">
+    <mat-card class="example-card">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{this.service.filterNames(pollution.cityId)}}</mat-card-title>
+            <mat-card-subtitle>{{this.service.filterStates(pollution.stateId)}}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+            <mat-card-subtitle>Pollution</mat-card-subtitle>
+            <hr />
+            <p>
+                AQ Index: {{pollution.current.pollution.aqius}}
+
+                <br />
+                <br />
+                Last modified: {{pollution.current.pollution.timestamp}}
+            </p>
+            <div mat-card-avatar class="example-header-image2"></div>
+            <mat-card-subtitle>Weather</mat-card-subtitle>
+            <hr />
+            <p>
+                Temperature: {{pollution.current.weather.temperature}}
+                <br />
+                <br />
+                Pressure: {{pollution.current.weather.pressure}}
+                <br />
+                <br />
+                Humidity: {{pollution.current.weather.humidity}}
+                <br />
+                <br />
+                Last modified: {{pollution.current.weather.timestamp}}
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="sendRequest()">See all timestamps of this city</button>
+        </mat-card-actions>
+    </mat-card>
+
+    <app-all-time-stamps [timestamps]="timestamps" *ngIf="this.service.showComponent === true"></app-all-time-stamps>
+</div>

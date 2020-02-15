@@ -1,0 +1,34 @@
+.flex-container{
+    display: flex;
+    flex-direction: column;
+}
+.container{
+    flex: 100%;
+    display:flex;
+    justify-content: center;
+    padding:4em 2em 2em 2em;
+}
+
+#mat-select-states {
+    margin-left: 2em;
+    margin:5px
+}
+
+#mat-select-cities  {
+    margin-left: 2em;
+    margin:5px
+}
+
+button {
+   // margin-left: 4em;
+   margin:5px
+}
+
+.level-2{
+    display:flex;
+    justify-content: center;
+}
+
+.level-2 > div {
+    flex: 50%;
+}
