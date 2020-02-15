@@ -49,13 +49,13 @@ export class CitiesComponent implements OnInit {
 
     this.service.getDataFromApi(this.selectedCity, this.selectedState);
 
-    this.service.getDetailsAboutCity(this.selectedState, this.selectedCity).subscribe(
-      res => {
-        this.pollution = res;
-        this.check = true;
-      }
-    );
-
+    // this.service.getDetailsAboutCity(this.selectedState, this.selectedCity).subscribe(
+    //   res => {
+    //     this.pollution = this.service.newPollution;
+    //     this.check = true;
+    //   }
+    // );
+    
 
 
     if (this.showComponent === false)

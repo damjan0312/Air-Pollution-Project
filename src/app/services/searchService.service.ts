@@ -127,11 +127,12 @@ export class searchService {
     }
 
     getStateId(name: string): string {
-        let id: string = this.States.filter(item => {
-            if (item.state === name)
+        console.log(this.States,"testnovi",this.Cities)
+        let id: string = this.Cities.filter(item => {
+            if (item.city === name)
                 return item;
         }).map(item => {
-            return item.id;
+            return item.stateId;
         })[0]
         return id;
     }
@@ -140,15 +141,15 @@ export class searchService {
 
     getDataFromApi(cityId: string, stateId: string) {
 
-        let pol: Pollution;
+        
 
         let URL_API = `http://api.airvisual.com/v2/city?city=${this.filterNames(cityId)}&state=${this.filterStates(stateId)}&country=Serbia&key=02b8ab70-76d2-4836-ab02-abf4fb94a5f4`;
         this.http.get(URL_API).subscribe(res => {
             let p: Pollution = res["data"] as Pollution;
             // console.log("DATA FROM API ", res["data"], p);
-            pol = {
+            this.newPollution = {
                 cityId: this.getCityId(res["data"]["city"]),
-                stateId: this.getStateId(res["data"]["state"]),
+                stateId: this.getStateId(res["data"]["city"]),
                 current: {
                     weather: {
                         timestamp: res["data"]["current"]["weather"]["ts"],
@@ -158,14 +159,16 @@ export class searchService {
                     },
                     pollution: {
                         timestamp: res["data"]["current"]["pollution"]["ts"],
-                        aqius: res["data"]["current"]["pollution"]["aqius"]
+                        aqius: parseInt(res["data"]["current"]["pollution"]["aqius"])
                     }
 
                 }
             }
-
-            this.postDataFromApi(pol);
-        })
+            this.check=true;
+            console.log(this.newPollution,"testttttttttttt");
+            this.postDataFromApi(this.newPollution);
+        });
+       
     }
 
     postDataFromApi(obj: Pollution): void {

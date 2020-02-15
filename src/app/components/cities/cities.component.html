@@ -39,7 +39,7 @@
 
         </div>
         <div>
-            <app-display-city [pollution]="pollution" *ngIf="this.check === true">
+            <app-display-city [pollution]="this.service.newPollution" *ngIf="this.service.check === true">
             </app-display-city>
         </div>
     </div>

@@ -11,7 +11,7 @@ export interface Pollution {
         },
         pollution?: {
             timestamp?: string,
-            aqius?: string
+            aqius?: number
         }
     }
 }
